@@ -1,0 +1,31 @@
+/* Importar Fuentes */
+
+@font-face{
+	font-family: "yanone";
+	src: url("fonts/yanone.ttf");
+}
+
+@font-face{
+	font-family: "finger";
+	src: url("fonts/finger.ttf");
+}
+
+@font-face{
+	font-family: "titilium";
+	src: url("fonts/titilium.ttf");
+}
+
+
+/* Generales */
+
+*{
+	margin: 0px auto;
+	padding: 0px auto;
+}
+
+body{
+	font-family: "yanone", Arial, Helvetica;
+	font-size: 20px;
+	background: url("../img/pattern.png");
+	position: fixed;
+}
