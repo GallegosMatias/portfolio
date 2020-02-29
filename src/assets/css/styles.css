@@ -205,7 +205,9 @@ form textarea{
 }
 
 form button,
-form input[type="submit"]{
+form input[type="submit"],
+.button-edit,
+.button-delete{
 	display: block;
 	font-size: 15px;
 	padding: 8px;
@@ -295,4 +297,32 @@ form span{
 
 .lista_proyectos{
 	margin-top: 30px;
+}
+
+.project a{
+	text-decoration: none;
+	color: black;
+}
+
+.contain .image_d{
+	float:left;
+	width: 45%;
+}
+
+.contain .image_d img{
+	width: 100%;
+}
+
+.contain .data{
+	float: right;
+	width: 45%;
+	margin-left: 20px;
+}
+
+.button-edit,
+.button-delete{
+	font-size: 20px;
+	margin-right: 10px;
+	width: 30%;
+	text-decoration: none;
 }

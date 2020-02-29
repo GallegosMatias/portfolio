@@ -12,51 +12,60 @@ import { Global } from '../../services/global';
 })
 export class CreateComponent implements OnInit {
 
-  public title: string;
-  public project: Project;
-  public status: string;
-  public filesToUpload: Array<File>;
+	public title: string;
+	public project: Project;
+	public save_project;
+	public status: string;
+	public filesToUpload: Array<File>;
+  public url: string;
 
-  constructor(
-    private _projectService: ProjectService,
-    private _uploadService: UploadService
+	constructor(
+		private _projectService: ProjectService,
+		private _uploadService: UploadService
+	){
+		this.title = "Crear proyecto";
+		this.project = new Project('','','','',2019,'','');
+    this.url = Global.url;
+	}
 
-  ) {
-    this.title = "Crear Proyecto";
-    this.project = new Project('', '', '', '', 2019, '', '');
-  }
+	ngOnInit() {
+	}
 
-  ngOnInit(): void {
-  }
+	onSubmit(form){
 
-  onSubmit(form){
-    console.log(this.project);
+		// Guardar datos básicos
+		this._projectService.saveProject(this.project).subscribe(
+			response => {
+				if(response.project){
 
-    //Guardar datos
-    this._projectService.saveProject(this.project).subscribe(
-      response => {
-        if (response.project) {
+					// Subir la imagen
+					if(this.filesToUpload){
+						this._uploadService.makeFileRequest(Global.url+"upload-image/"+response.project._id, [], this.filesToUpload, 'image')
+						.then((result:any) => {
 
-          //Subir imagen
-          this._uploadService.makeFileRequest(Global.url+"upload-image/"+response.project._id, [], this.filesToUpload, 'image').then((result:any) => {
-            this.status = 'success';
-            console.log(result);
-            form.reset();
-          });
+							this.save_project = result.project;
 
+							this.status = 'success';
+							form.reset();
+						});
+					}else{
+						this.save_project = response.project;
+						this.status = 'success';
+						form.reset();
+					}
 
-        }else{
-          this.status = 'failed';
-        }
-      },
-      error => {
-        console.log(<any>error);
-      }
-    );
-  }
+				}else{
+					this.status = 'failed';
+				}
+			},
+			error => {
+				console.log(<any>error);
+			}
+		);
+	}
 
-  fileChangeEvent(fileInput: any){
-    this.filesToUpload = <Array<File>>fileInput.target.files;
-  }
+	fileChangeEvent(fileInput: any){
+		this.filesToUpload = <Array<File>>fileInput.target.files;
+	}
 
 }
