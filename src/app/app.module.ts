@@ -13,6 +13,9 @@ import { HomeComponent } from './components/home/home.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { EditComponent } from './components/edit/edit.component';
 
+import * as $ from 'jquery';
+
+
 @NgModule({
   declarations: [
     AppComponent,

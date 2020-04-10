@@ -45,7 +45,7 @@ header{
 	width: 100%;
 	height: 90px;
 	background: #1B1F26;
-	position: fixed; /*Barra de navegacion siempre arriba*/
+	/*position: fixed; Barra de navegacion siempre arriba*/
 	text-transform: uppercase;
 }
 
@@ -325,4 +325,31 @@ form span{
 	margin-right: 10px;
 	width: 30%;
 	text-decoration: none;
+}
+
+/* Home */
+.container_home{
+	height: 715px;
+	overflow: hidden;
+}
+
+.slider{
+	margin: 0px auto;
+}
+
+/* Slider */
+
+.img_slider{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+#content{
+	padding-top: 0px;
+}
+
+.bx-wrapper{
+	background: transparent;
+
 }
